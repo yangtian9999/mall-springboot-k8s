@@ -1,0 +1,4 @@
+kind: Deployment
+
+# replicaCount -- Only applicable if kind=Deployment
+replicaCount: 2
