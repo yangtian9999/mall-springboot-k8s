@@ -1,4 +1,1 @@
-image:
-  repository: cr.fluentbit.io/fluent/fluent-bit
-  # Overrides the image tag whose default is {{ .Chart.AppVersion }}
-  tag: "1.9.8"
+replicaCount: 2
