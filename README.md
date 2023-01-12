@@ -1,3 +1,5 @@
+argocd test
+
 # mall, fork from https://github.com/macrozheng/mall
 
 # Just for self study
