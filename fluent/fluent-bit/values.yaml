@@ -1,8 +1,8 @@
 # Default values for fluent-bit.
 
 # kind -- DaemonSet or Deployment
-#kind: DaemonSet
-kind: Deployment
+kind: DaemonSet
+#kind: Deployment
 
 # replicaCount -- Only applicable if kind=Deployment
 replicaCount: 1
