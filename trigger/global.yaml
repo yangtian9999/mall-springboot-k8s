@@ -1,0 +1,14 @@
+        global:
+          env: prod         
+          argocd: 
+            project: default
+            destination:
+              server: https://kubernetes.default.svc
+            fluent:
+              imagetag: 1.9.10
+              releaseName: fluent
+              namespace: logging
+              git:
+                repo: https://github.com/yangtian9999/mall-springboot-k8s.git
+                branch: argocd-test
+                path: fluent/fluent-bit

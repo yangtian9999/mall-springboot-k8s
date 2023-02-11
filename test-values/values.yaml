@@ -1,0 +1,47 @@
+global:
+  env: prod
+  
+  argocd: 
+    project: default
+    destination:
+      server: https://kubernetes.default.svc
+
+    fluent:
+      imagetag: 1.9.9
+      releaseName: fluent
+      namespace: logging
+      git:
+        repo: https://github.com/yangtian9999/mall-springboot-k8s.git
+        branch: argocd-test
+        path: fluent/fluent-bit
+
+
+    istio:
+      imagetag: 1.9.9
+      releaseName: istio
+      namespace: istio
+      git:
+        repo: https://github.com/yangtian9999/mall-springboot-k8s.git
+        branch: argocd-test
+        path: istio/istio
+
+    
+    xxx-yyy:
+      enabled: false
+
+
+
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
