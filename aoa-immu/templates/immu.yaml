@@ -19,10 +19,7 @@ spec:
     path: {{ .Values.global.argocd.immu.git.path }}
     helm:
       releaseName: {{ .Values.global.argocd.immu.releaseName }}
-      # values: |
-      #   {{- toYaml .Values | nindent 8 }}
-      #   image:
-      #     tag: {{ .Values.global.argocd.immu.imagetag }}
+
 
 
   # Sync policy
