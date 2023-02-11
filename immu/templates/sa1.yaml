@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/component: ff
+    app.kubernetes.io/name: ff
+    app.kubernetes.io/part-of: ff
+  name: sa1
+  namespace: immu
