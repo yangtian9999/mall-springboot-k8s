@@ -23,7 +23,7 @@ spec:
             destination:
               server: https://kubernetes.default.svc
             fluent:
-              imagetag: 1.9.9
+              imagetag: 1.9.x
               releaseName: fluent
               namespace: logging
               git:
