@@ -7,6 +7,13 @@ cp mall-search/target/*.jar ./jars
 cp mall-security/target/*.jar ./jars
 Here is a list of some of the actions that can be performed on an S3 bucket or object through a policy:
 
+
+
+
+
+
+
+
 - s3:PutObject: Allows a user to create or upload an object to the bucket.
 - s3:GetObject: Allows a user to download an object from the bucket.
 - s3:ListBucket: Allows a user to list the objects in a bucket.
