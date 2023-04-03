@@ -5,7 +5,25 @@ cp mall-mbg/target/*.jar ./jars
 cp mall-portal/target/*.jar ./jars
 cp mall-search/target/*.jar ./jars
 cp mall-security/target/*.jar ./jars
+Here is a list of some of the actions that can be performed on an S3 bucket or object through a policy:
 
+- s3:PutObject: Allows a user to create or upload an object to the bucket.
+- s3:GetObject: Allows a user to download an object from the bucket.
+- s3:ListBucket: Allows a user to list the objects in a bucket.
+- s3:DeleteObject: Allows a user to delete an object from the bucket.
+- s3:ListAllMyBuckets: Allows a user to list all the buckets in their account.
+- s3:GetBucketLocation: Allows a user to retrieve the location of a bucket.
+- s3:GetBucketPolicy: Allows a user to retrieve the policy of a bucket.
+- s3:PutBucketPolicy: Allows a user to put a new policy on the bucket.
+- s3:DeleteBucketPolicy: Allows a user to delete the policy of a bucket.
+- s3:ListBucketVersions: Allows a user to list all the versions of objects in a bucket.
+- s3:PutObjectTagging: Allows a user to add or modify tags to an object.
+- s3:GetObjectTagging: Allows a user to retrieve the tags of an object.
+- s3:DeleteObjectTagging: Allows a user to delete the tags of an object.
+- s3:GetBucketEncryption: Allows a user to retrieve the encryption configuration of a bucket.
+- s3:PutBucketEncryption: Allows a user to put a new encryption configuration on the bucket.
+
+This is not a comprehensive list, but it covers some of the most common actions that can be performed on an S3 bucket or object through a policy.
 To delete S3 files that are 1 week old using awscli, you can use the following command:
 
 ```
