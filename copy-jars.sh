@@ -9,7 +9,31 @@ Here is a list of some of the actions that can be performed on an S3 bucket or o
 
 
 
+To save a.txt to an S3 bucket with a date-time prefix, you can use the `aws` command-line interface (CLI). First, make sure you have the CLI installed and configured with your AWS credentials.
 
+Then, you can use the following command to upload a.txt to S3:
+
+```
+aws s3 cp a.txt s3://my-bucket/$(date +"%Y-%m-%d_%H-%M-%S")_a.txt
+```
+
+Replace `my-bucket` with the name of your S3 bucket. This will create a new file with a name in the format `YYYY-MM-DD_HH-MM-SS_a.txt` in the root of your bucket.
+
+To save the file daily, you can create a cron job that runs the above command every day at a specific time. For example, to run the command at 3:30 AM every day, you can add the following line to your crontab file (run `crontab -e` to edit it):
+
+```
+30 3 * * * aws s3 cp a.txt s3://my-bucket/$(date +"\%Y-\%m-\%d")_a.txt
+```
+
+This will create a new file with a name in the format `YYYY-MM-DD_a.txt` in the root of your bucket every day at 3:30 AM.
+
+To keep only the latest 6 history files in your S3 bucket, you can use the following command:
+
+```
+aws s3 ls s3://my-bucket/ | grep _a.txt | sort -r | awk 'NR>6{print "s3://my-bucket/" $NF}' | xargs -r aws s3 rm
+```
+
+This will list all files in your bucket that match the pattern `*_a.txt`, sort them by modification time (newest first), skip the latest 6 files, and delete the rest. Replace `my-bucket` with the name of your S3 bucket.
 
 
 
