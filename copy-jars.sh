@@ -8,6 +8,70 @@ cp mall-security/target/*.jar ./jars
 Here is a list of some of the actions that can be performed on an S3 bucket or object through a policy:
 
 
+To use a secret for the bind password in the Argo CD Helm chart's `dex.config`, you can follow these steps:
+
+1. Create a Kubernetes Secret that contains the password as a key-value pair. For example, you can create a secret called `dex-bind-secret` with the password `mysecret` like this:
+
+   ```
+   kubectl create secret generic dex-bind-secret --from-literal=password=mysecret
+   ```
+
+2. In your `values.yaml` file, replace the password string with a reference to the secret. For example, if you have the following values in your `values.yaml` file:
+
+   ```
+   dex:
+     config:
+       ...
+       connectors:
+         - type: ldap
+           ...
+           bindDN: "cn=admin,dc=my-domain,dc=com"
+           bindPW: "mysecret"
+           ...
+       ...
+   ```
+
+   You can replace the `bindPW` value with a reference to the secret:
+
+   ```
+   dex:
+     config:
+       ...
+       connectors:
+         - type: ldap
+           ...
+           bindDN: "cn=admin,dc=my-domain,dc=com"
+           bindPWSecret:
+             name: dex-bind-secret
+             key: password
+           ...
+       ...
+   ```
+
+   This will set the `bindPW` value for the LDAP connector to the contents of the `password` key in the `dex-bind-secret` secret.
+
+3. When you install the Argo CD Helm chart, pass the `--set` flag to specify the LDAP bind password secret name. For example:
+
+   ```
+   helm install argocd argo/argocd --set-file dex.config.connectors[0].bindPWSecret=/path/to/dex-bind-secret.yaml
+   ```
+
+   This will set the `dex.config.connectors[0].bindPWSecret` value to the contents of the `dex-bind-secret.yaml` file, which should contain the following:
+
+   ```
+   apiVersion: v1
+   kind: Secret
+   metadata:
+     name: dex-bind-secret
+   type: Opaque
+   data:
+     password: <base64-encoded password>
+   ```
+
+   Note: If you have other values in your `values.yaml` file that depend on the LDAP bind password, you should replace those values with references to the secret as well.
+   
+
+
 
 To save a.txt to an S3 bucket with a date-time prefix, you can use the `aws` command-line interface (CLI). First, make sure you have the CLI installed and configured with your AWS credentials.
 
