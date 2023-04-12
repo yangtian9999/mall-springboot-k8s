@@ -5,7 +5,35 @@ cp mall-mbg/target/*.jar ./jars
 cp mall-portal/target/*.jar ./jars
 cp mall-search/target/*.jar ./jars
 cp mall-security/target/*.jar ./jars
-Here is a list of some of the actions that can be performed on an S3 bucket or object through a policy:
+Here is a list of some of the actions that can beHere's an example YAML file that creates a Kubernetes service account named "my-service-account" with full cluster-admin permissions:
+
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: my-service-account
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: my-cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: my-service-account
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+```
+
+You can apply this YAML file using the `kubectl apply` command:
+
+```
+kubectl apply -f <filename>.yaml
+```
+
+Make sure you have the necessary permissions to create service accounts and cluster role bindings in your Kubernetes cluster.
 
 
 To use a secret for the bind password in the Argo CD Helm chart's `dex.config`, you can follow these steps:
