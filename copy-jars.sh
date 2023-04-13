@@ -7,7 +7,14 @@ cp mall-search/target/*.jar ./jars
 cp mall-security/target/*.jar ./jars
 Here is a list of some of the actions that can beHere's an example YAML file that creates a Kubernetes service account named "my-service-account" with full cluster-admin permissions:
 
+FATA[0000] Failed to create ClusterRole "argocd-manager-role": clusterroles.rbac.authorization.k8s.io "argocd-manager-role" is forbidden: user "system:serviceaccount:test:sa1" (groups=["system:serviceaccounts" "system:serviceaccounts:test" "system:authenticated"]) is attempting to grant RBAC permissions not currently held:
+{APIGroups:["*"], Resources:["*"], Verbs:["*"]}
+{NonResourceURLs:["*"], Verbs:["*"]}
+
+
 ```
+
+
 apiVersion: v1
 kind: ServiceAccount
 metadata:
